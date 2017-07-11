@@ -1,0 +1,34 @@
+<div style="margin-left: 10%; margin-bottom: 2px;" ng-controller="inputSpeechController as spc">
+  
+  
+  
+  
+    <h3>Search</h3>  
+    <input id='input-search-box' ng-model="spc.searchText" name="text" placeholder="what would you like to search today??" ng-keyup="spc.submitForm()"/>     
+  
+
+  <div style="margin-top: 15px;" ng-if="spc.loadingDone">
+    <button ng-click="spc.prevPage()">
+          Previous
+      </button>
+      
+      <button  ng-click="spc.nextPage()">
+          Next
+      </button>
+  </div>
+  <table class="tableClass" ng-if="spc.loadingDone">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>      
+    </tr>
+    <tr ng-repeat="item in spc.resultList track by $index">
+      <td><a data-ng-href="{{item.url}}">{{item.title}}</a></td>
+      <td>
+          {{item.authorName}}, {{item.author}}
+          
+
+      </td>
+    </tr> 
+  </table>
+  
+</div>
